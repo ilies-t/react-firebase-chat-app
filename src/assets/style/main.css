@@ -1,0 +1,248 @@
+@import './reset.css';
+@import './fonts/fonts.css';
+* {
+  	font-family: 'Larsseit';
+  	font-weight: bold;
+  	font-style: normal;
+	color: var(--secondary);
+}
+:root {
+  	--primary: #FFFFFF;
+  	--secondary: #0500FF;
+  	--tertiary: #F9F9FF;
+  	--borderDefault: 15px;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: var(--tertiary);
+	padding: 0px 3%;
+}
+
+/* text */
+h2, h5 {
+	word-break: break-word;
+}
+h2 {
+	font-size: 80px;
+}
+h5 {
+	font-size: 20px;
+	white-space: pre-wrap;
+	font-family: 'Larsseit';
+	font-weight: normal;
+	font-style: normal;
+	text-align: left;
+}
+
+/* general */
+span.separator {
+  	width: 90%;
+  	height: 3px;
+  	margin: 20px 0px;
+  	background: var(--tertiary);
+  	border-radius: var(--borderDefault);
+}
+div.input-block, div.block-or-container, div.message-wrapper, #write-what-do-you-want {
+  	display: flex;
+  	flex-flow: column nowrap;
+  	align-items: center;
+  	position: relative;
+  	margin: auto;
+  	width: 80%;
+  	margin-top: 50px;
+}
+input, textarea {
+  	background: var(--primary);
+  	font-size: 20px;
+  	width: 90%;
+  	max-width: 700px;
+  	padding: 30px;
+  	border-radius: var(--borderDefault);
+  	box-shadow: 0 0 0 2px rgba(5, 0, 255, 0);
+  	transition-timing-function: ease-in-out;
+  	transition-duration: .3s;
+}
+input::placeholder, textarea::placeholder {
+  	color: var(--secondary);
+}
+input:hover, textarea:hover {
+  	cursor: pointer;
+  	box-shadow: 0 0 0 2px rgba(5, 0, 255, 0.25);
+}
+input:focus, textarea:focus {
+  	box-shadow: 0 0 0 3px rgba(5, 0, 255, 0.75);
+}
+textarea {
+  	width: 100%;
+  	resize: none;
+	  min-height: 150px;
+	  line-height: 150%;
+}
+.bg-cover {
+  	position: relative;
+  	background-position: center center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+}
+
+/* header */
+.App-header {
+	height: 100px;
+}
+.App-header > img {
+	height: 100%;
+}
+
+/* buttons */
+button {
+  	display: inline-block;
+  	text-align: center;
+  	background: var(--secondary);
+  	font-family: 'Larsseit';
+  	font-weight: bold;
+  	font-style: normal;
+  	color: var(--primary);
+  	border-radius: var(--borderDefault);
+  	padding: 20px 50px;
+  	margin-top: 20px;
+  	cursor: pointer;
+  	font-size: 25px;
+}
+
+/* get user infos */
+div.main-get-infos {
+  	margin-bottom: 80px;
+}
+#user-chose-picture {
+  	position: relative;
+  	width: 150px;
+  	height: 150px;
+  	border-radius: 1000px;
+  	background-color: var(--secondary);
+  	z-index: 0;
+  	overflow: hidden;
+}
+#user-chose-picture > input{
+  	position: absolute;
+  	top: 0px;
+  	left: 0px;
+  	width: 100%;
+  	height: 100%;
+  	max-width: none;
+  	padding: 0px;
+  	opacity: 0;
+  	z-index: 1;
+}
+#user-chose-picture::before {
+  	content: '';
+  	position: absolute;
+  	bottom: 0px; left: 0px;
+  	width: 100%; height: 0%;
+  	background: rgba(0, 0, 0, 0.75) url('../images/upload.svg') center center no-repeat;
+  	background-size: 60%;
+  	z-index: 0;
+  	opacity: 0;
+  	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  	transition-duration: .3s;
+}
+#user-chose-picture:hover::before {
+  	height: 25%;
+  	background-size: 25%;
+  	opacity: 1;
+}
+img.loader {
+  	position: relative;
+  	margin: auto;
+  	height: 40px;
+  	bottom: 50px;
+  	animation: loaderLoop 2s infinite linear;
+  	transition-duration: .3s;
+  	opacity: 0;
+  	z-index: -1;
+}
+img.loader.active {
+  	bottom: -5px;
+	  opacity: 1;
+	  z-index: 0;
+}
+@keyframes loaderLoop {
+  	0% {transform: rotate(0deg)}
+  	100% {transform: rotate(-360deg)}
+};
+
+/* chat content */
+#write-what-do-you-want {
+  	margin-bottom: 50px;
+}
+div#main-home > form > div:last-of-type {
+	margin-bottom: 50px;
+}
+div.message-wrapper {
+  	background: var(--primary);
+  	padding: 20px;
+  	margin-top: 20px;
+  	border-radius: var(--borderDefault);
+}
+div.message-wrapper > h5 {
+  	width: 100%;
+  	padding-left: 70px;
+}
+div.profile-container {
+  	position: relative;
+  	display: inline-flex;
+  	flex-flow: row nowrap;
+	justify-content: space-between;
+  	align-items: center;
+  	width: 100%;
+}
+div.profile-container > div {
+  	position: relative;
+	display: inline-flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	width: 70%;
+}
+div.profile-container > div > div.bg-cover {
+  	background-color: var(--secondary);
+  	border-radius: 1000px;
+  	width: 50px;
+  	height: 50px;
+}
+div.profile-container > div > div.bg-cover > img {
+  	margin: auto;
+  	height: 30px;
+}
+div.profile-container > div > h4 {
+  	font-size: 22px;
+	margin-left: 20px;
+	width: inherit;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+div.profile-container > h6 {
+	font-size: 13px;
+	width: 30%;
+	text-align: right;
+}
+
+@media screen and (orientation:portrait) {
+	h2 {
+		font-size: 12vw;
+	}
+	input, textarea {
+		padding: 20px;
+	}
+	input {
+		width: 100%;
+	}
+	div.message-wrapper {
+		width: 100%;
+	}
+	div.message-wrapper > h5 {
+		padding: 0px;
+	}
+}
